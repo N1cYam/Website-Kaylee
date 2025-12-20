@@ -1,23 +1,41 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Site</title>
-  </head>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+</head>
+<body>
+    <h1>Enter Password to access the next screen</h1>
+    <form id="loginForm">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit">Login</button>
+    </form>
 
-  <body>
-    <!-- Old content
-    <h1>Notes for my Beloved</h1>
-    <p>This is my first HTML page.</p>
-    -->
+    <script>
+        // Define the correct password (for demonstration purposes only)
+        const CORRECT_PASSWORD = "MerryChristmasLove"; //
+        const REDIRECT_URL = "MainPage.html";
 
-    <h1>My Site</h1>
+        // Add an event listener for the form submission
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            // Prevent the form from submitting in the traditional way
+            event.preventDefault();
 
-    <h2>Weekly updates</h2>
-    <ul>
-      <li><a href="weeks/WhatIsThis.html">Info</a></li>
-      <li><a href="weeks/Week1.html">Week1</a></li>
-    </ul>
-  </body>
+            // Get the entered password
+            const enteredPassword = document.getElementById("password").value;
+
+            // Check if the password is correct
+            if (enteredPassword === CORRECT_PASSWORD) {
+                // If correct, redirect the user to the new page
+                window.location.href = REDIRECT_URL;
+            } else {
+                // If incorrect, show an error message
+                alert("Incorrect password. Please try again.");
+                // Optional: clear the password field
+                document.getElementById("password").value = "";
+            }
+        });
+    </script>
+
+</body>
 </html>
